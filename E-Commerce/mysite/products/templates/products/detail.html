@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+{%include "navbar.html"%}
+<div class="row">
+  <div style="margin-top:70px">
+  <img src="{% if product.image %}{{product.image.url}} {% endif %}" alt="Mobile image" style="width:500px">
+  </div>
+<div class="product-description">
+        <b><p id="product-name">{{product.name}}</p></b>
+          <p> <b>Price: Rs {{product.price}} Only!</b> </p>
+          <p> <b>Specifications : {{product.description|safe|linebreaksbr}}</b></p>
+          <p><b>Stock: Hurry up! only {{product.stock}} left</b></p>
+          <button type="button" class="add-to-cart">Add to Cart</button>
+          <button type="button" class="add-to-cart">Buy Now</button>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+{%include "navbar.html"%}
+<div class="main-wrap">
+<div class="sidebar"><h3>Categories</h3>
+  {% for c in categories %}
+  <ol style="margin-left:20px">
+  <li {% if category.slug == c.slug %}  {% endif %} style="list-style:none">
+                    <a href="{{ c.get_absolute_url }}" class="btn btn-primary">{{ c.name }}</a>
+  </li>
+
+  </ol>
+
+  {% endfor %}
+
+</div>
+
+</div>
+{% for product in products %}
+<div class="column">
+  <a href="{{ product.get_absolute_url }}">
+<img src="{% if product.image %}{{product.image.url}}{% endif %}" alt="Mobile image" style="height:300px; width:300px" id="product-image">
+  </a>
+  <p style="font-size:18px">
+
+<a href="{{product.get_absolute_url}}" style="margin-left:190px">{{product.name}}</a>
+<br>
+<a href="{{product.get_absolute_url}}"style="margin-left:150px">Now at Rs {{product.price}}</a>
+  </p>
+  <button type="button" class="add-to-cart">Add to Cart</button>
+
+
+</div>
+
+{%endfor%}
+
+{%endblock%}
